@@ -18,6 +18,13 @@ func init() {
 		Height: TileSize,
 	}
 
+	boostRectangle = rayLib.Rectangle{
+		X:      TileSize * 7,
+		Y:      TileSize * 5,
+		Width:  TileSize,
+		Height: TileSize,
+	}
+
 	initGame()
 }
 

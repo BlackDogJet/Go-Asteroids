@@ -24,6 +24,20 @@ func (player *Player) Draw() {
 		Height: player.size.Y,
 	}
 
+	if player.isBoosting {
+		rayLib.DrawTexturePro(
+			tiles,
+			boostRectangle,
+			destinationTexture,
+			rayLib.Vector2{
+				X: player.size.X / 2,
+				Y: (player.size.Y / 2) - 40,
+			},
+			player.rotation,
+			rayLib.White,
+		)
+	}
+
 	rayLib.DrawTexturePro(
 		tiles,
 		spriteRectangle,
@@ -38,17 +52,30 @@ func (player *Player) Draw() {
 }
 
 func (player *Player) Update() {
-	// Rotate plaer with arrow keys or WASD
+	player.isBoosting = false
+
+	// Rotate player left with arrow keys or A key
 	if rayLib.IsKeyDown(rayLib.KeyLeft) || rayLib.IsKeyDown(rayLib.KeyA) {
 		player.rotation -= RotationSpeed
-	} else if rayLib.IsKeyDown(rayLib.KeyRight) || rayLib.IsKeyDown(rayLib.KeyD) {
+	}
+
+	// Rotate player right with arrow keys or D key
+	if rayLib.IsKeyDown(rayLib.KeyRight) || rayLib.IsKeyDown(rayLib.KeyD) {
 		player.rotation += RotationSpeed
-	} else if rayLib.IsKeyDown(rayLib.KeyUp) || rayLib.IsKeyDown(rayLib.KeyW) {
+	}
+
+	// Speed up player with up arrow key or W key
+	if rayLib.IsKeyDown(rayLib.KeyUp) || rayLib.IsKeyDown(rayLib.KeyW) {
+		player.isBoosting = true
+
 		// Speed the player up
 		if player.acceleration < 0.9 {
 			player.acceleration += 0.1
 		}
-	} else if rayLib.IsKeyDown(rayLib.KeyDown) || rayLib.IsKeyDown(rayLib.KeyS) {
+	}
+
+	// Slow down player with down arrow key or S key
+	if rayLib.IsKeyDown(rayLib.KeyDown) || rayLib.IsKeyDown(rayLib.KeyS) {
 		// Slow the player down
 		if player.acceleration > 0.0 {
 			player.acceleration -= 0.05
