@@ -9,5 +9,6 @@ func main() {
 
 	for !rayLib.WindowShouldClose() {
 		draw()
+		update()
 	}
 }

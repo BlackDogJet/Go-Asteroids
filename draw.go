@@ -35,3 +35,7 @@ func draw() {
 	rayLib.DrawText("Score: 0", 10, 10, 20, rayLib.Gray)
 	rayLib.EndDrawing()
 }
+
+func update() {
+	player.Update()
+}

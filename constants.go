@@ -1,7 +1,9 @@
 package main
 
 const (
-	TileSize     = 64
-	ScreenWidth  = 800
-	ScreenHeight = 600
+	TileSize      = 64
+	PlayerSpeed   = 6.0
+	ScreenWidth   = 800
+	ScreenHeight  = 600
+	RotationSpeed = 2.0
 )
