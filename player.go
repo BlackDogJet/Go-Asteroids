@@ -64,6 +64,10 @@ func (player *Player) Update() {
 		player.rotation += RotationSpeed
 	}
 
+	if rayLib.IsKeyDown(rayLib.KeySpace) {
+		fireShot()
+	}
+
 	// Speed up player with up arrow key or W key
 	if rayLib.IsKeyDown(rayLib.KeyUp) || rayLib.IsKeyDown(rayLib.KeyW) {
 		player.isBoosting = true

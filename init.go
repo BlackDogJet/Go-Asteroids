@@ -32,6 +32,8 @@ func init() {
 		Height: TileSize,
 	}
 
+	shots = make([]Shot, MaxShots)
+
 	initGame()
 }
 
@@ -41,6 +43,10 @@ func initGame() {
 	asteroids = nil
 	for range StartingAsteroids {
 		asteroids = append(asteroids, createLargeAsteroid())
+	}
+
+	for shot := range shots {
+		shots[shot].active = false
 	}
 
 	player = Player{

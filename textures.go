@@ -5,6 +5,7 @@ import (
 )
 
 var (
+	shots             []Shot
 	tiles             rayLib.Texture2D
 	player            Player
 	gameOver          bool

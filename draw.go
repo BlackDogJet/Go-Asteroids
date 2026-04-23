@@ -36,6 +36,10 @@ func draw() {
 		asteroids[asteroid].Draw()
 	}
 
+	for shot := range shots {
+		shots[shot].Draw()
+	}
+
 	if gameOver {
 		drawCenteredText("Game over", ScreenHeight/2, 50, rayLib.Red)
 	}
@@ -51,6 +55,10 @@ func update() {
 
 		for asteroid := range asteroids {
 			asteroids[asteroid].Update()
+		}
+
+		for shot := range shots {
+			shots[shot].Update()
 		}
 
 		checkCollisions()
