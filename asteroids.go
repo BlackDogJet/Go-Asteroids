@@ -91,15 +91,35 @@ func createAsteroid(asteroidSize AsteroidSize, position, speed rayLib.Vector2) A
 	}
 }
 
-func checkCollisions() {
-	for asteroid := len(asteroids) - 1; asteroid >= 0; asteroid-- {
-		if rayLib.CheckCollisionCircles(
-			player.position,
-			player.size.X/4,
-			asteroids[asteroid].position,
-			asteroids[asteroid].size.X/4,
-		) {
-			gameOver = true
+func splitAsteroid(asteroid Asteroid) {
+	var split int
+	var newSize AsteroidSize
+
+	switch size := asteroid.asteroidSize; size {
+	case Medium:
+		{
+			newSize = Small
+			split = 4
 		}
+
+	case Large:
+		{
+			newSize = Medium
+			split = 2
+
+		}
+
+	default:
+		{
+			return
+		}
+	}
+
+	for range split {
+		angle := float64(rayLib.GetRandomValue(0, 360))
+		direction := getDirectionVector(float32(angle))
+		speed := rayLib.Vector2Scale(direction, 2.0)
+		newAsteroid := createAsteroid(newSize, asteroid.position, speed)
+		asteroids = append(asteroids, newAsteroid)
 	}
 }

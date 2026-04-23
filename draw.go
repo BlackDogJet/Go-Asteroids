@@ -1,6 +1,8 @@
 package main
 
 import (
+	"fmt"
+
 	rayLib "github.com/gen2brain/raylib-go/raylib"
 )
 
@@ -45,7 +47,7 @@ func draw() {
 	}
 
 	rayLib.ClearBackground(rayLib.Black)
-	rayLib.DrawText("Score: 0", 10, 10, 20, rayLib.Gray)
+	rayLib.DrawText(fmt.Sprintf("Score %d", asteroidsDestroyed), 10, 10, 20, rayLib.Gray)
 	rayLib.EndDrawing()
 }
 
@@ -68,4 +70,34 @@ func update() {
 func drawCenteredText(text string, position_y int32, fontSize int32, color rayLib.Color) {
 	textWidth := rayLib.MeasureText(text, fontSize)
 	rayLib.DrawText(text, (ScreenWidth/2)-(textWidth/2), position_y, fontSize, color)
+}
+
+func checkCollisions() {
+	for asteroid := len(asteroids) - 1; asteroid >= 0; asteroid-- {
+		if rayLib.CheckCollisionCircles(
+			player.position,
+			player.size.X/4,
+			asteroids[asteroid].position,
+			asteroids[asteroid].size.X/4,
+		) {
+			gameOver = true
+		}
+
+		for shot := range shots {
+			if shots[shot].active {
+				if rayLib.CheckCollisionCircles(
+					shots[shot].position,
+					shots[shot].radius,
+					asteroids[asteroid].position,
+					asteroids[asteroid].size.X/2,
+				) {
+					shots[shot].active = false
+					splitAsteroid(asteroids[asteroid])
+					asteroids = append(asteroids[:asteroid], asteroids[asteroid+1:]...)
+					asteroidsDestroyed++
+					break
+				}
+			}
+		}
+	}
 }
