@@ -31,6 +31,11 @@ func draw() {
 	// Draw player
 	player.Draw()
 
+	// Draw asteroids
+	for asteroid := range asteroids {
+		asteroids[asteroid].Draw()
+	}
+
 	rayLib.ClearBackground(rayLib.Black)
 	rayLib.DrawText("Score: 0", 10, 10, 20, rayLib.Gray)
 	rayLib.EndDrawing()
@@ -38,4 +43,8 @@ func draw() {
 
 func update() {
 	player.Update()
+
+	for asteroid := range asteroids {
+		asteroids[asteroid].Update()
+	}
 }

@@ -25,10 +25,22 @@ func init() {
 		Height: TileSize,
 	}
 
+	asteroidRectangle = rayLib.Rectangle{
+		X:      TileSize * 1,
+		Y:      TileSize * 4,
+		Width:  TileSize,
+		Height: TileSize,
+	}
+
 	initGame()
 }
 
 func initGame() {
+	asteroids = nil
+	for range StartingAsteroids {
+		asteroids = append(asteroids, createLargeAsteroid())
+	}
+
 	player = Player{
 		position:     rayLib.Vector2{X: 400, Y: 200},
 		speed:        rayLib.Vector2{X: 0.0, Y: 0.0},

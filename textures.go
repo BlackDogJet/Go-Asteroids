@@ -5,9 +5,11 @@ import (
 )
 
 var (
-	tiles           rayLib.Texture2D
-	player          Player
-	background      rayLib.Texture2D
-	boostRectangle  rayLib.Rectangle
-	spriteRectangle rayLib.Rectangle
+	tiles             rayLib.Texture2D
+	player            Player
+	asteroids         []Asteroid
+	background        rayLib.Texture2D
+	boostRectangle    rayLib.Rectangle
+	spriteRectangle   rayLib.Rectangle
+	asteroidRectangle rayLib.Rectangle
 )
