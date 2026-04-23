@@ -90,3 +90,16 @@ func createAsteroid(asteroidSize AsteroidSize, position, speed rayLib.Vector2) A
 		asteroidSize: asteroidSize,
 	}
 }
+
+func checkCollisions() {
+	for asteroid := len(asteroids) - 1; asteroid >= 0; asteroid-- {
+		if rayLib.CheckCollisionCircles(
+			player.position,
+			player.size.X/4,
+			asteroids[asteroid].position,
+			asteroids[asteroid].size.X/4,
+		) {
+			gameOver = true
+		}
+	}
+}

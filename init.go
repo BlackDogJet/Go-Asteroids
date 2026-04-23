@@ -36,6 +36,8 @@ func init() {
 }
 
 func initGame() {
+	gameOver = false
+
 	asteroids = nil
 	for range StartingAsteroids {
 		asteroids = append(asteroids, createLargeAsteroid())

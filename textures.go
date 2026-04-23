@@ -7,6 +7,7 @@ import (
 var (
 	tiles             rayLib.Texture2D
 	player            Player
+	gameOver          bool
 	asteroids         []Asteroid
 	background        rayLib.Texture2D
 	boostRectangle    rayLib.Rectangle
