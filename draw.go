@@ -44,15 +44,43 @@ func draw() {
 
 	if gameOver {
 		drawCenteredText("Game over", ScreenHeight/2, 50, rayLib.Red)
+		drawCenteredText("Press R to restart", ScreenHeight/2+60, 20, rayLib.White)
+	}
+
+	if victory {
+		drawCenteredText("Congrats, you won!", ScreenHeight/2, 50, rayLib.Green)
+		drawCenteredText("Press R to restart", ScreenHeight/2+60, 20, rayLib.White)
+	}
+
+	if paused {
+		drawCenteredText("Game Paused", ScreenHeight/2, 50, rayLib.Green)
+		drawCenteredText("Press P to resume", ScreenHeight/2+60, 20, rayLib.White)
 	}
 
 	rayLib.ClearBackground(rayLib.Black)
 	rayLib.DrawText(fmt.Sprintf("Score %d", asteroidsDestroyed), 10, 10, 20, rayLib.Gray)
+
+	// Pause
+	pauseTextSize := rayLib.MeasureText("[P]ause", 20)
+	rayLib.DrawText("[P]ause", ScreenWidth-pauseTextSize-10, 10, 20, rayLib.Gray)
+
 	rayLib.EndDrawing()
 }
 
 func update() {
-	if !gameOver {
+	if len(asteroids) == 0 {
+		victory = true
+	}
+
+	if rayLib.IsKeyDown(rayLib.KeyP) {
+		paused = !paused
+	}
+
+	if (gameOver || victory) && rayLib.IsKeyDown(rayLib.KeyR) {
+		initGame()
+	}
+
+	if !gameOver && !paused && !victory {
 		player.Update()
 
 		for asteroid := range asteroids {

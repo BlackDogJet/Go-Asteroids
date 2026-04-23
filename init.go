@@ -4,6 +4,21 @@ import (
 	rayLib "github.com/gen2brain/raylib-go/raylib"
 )
 
+var (
+	shots              []Shot
+	tiles              rayLib.Texture2D
+	paused             bool
+	player             Player
+	victory            bool
+	gameOver           bool
+	asteroids          []Asteroid
+	background         rayLib.Texture2D
+	boostRectangle     rayLib.Rectangle
+	spriteRectangle    rayLib.Rectangle
+	asteroidRectangle  rayLib.Rectangle
+	asteroidsDestroyed int
+)
+
 func init() {
 	rayLib.InitWindow(ScreenWidth, ScreenHeight, "Go-Asteroids")
 	rayLib.SetTargetFPS(60)
@@ -38,7 +53,10 @@ func init() {
 }
 
 func initGame() {
+	paused = false
+	victory = false
 	gameOver = false
+	asteroidsDestroyed = 0
 
 	asteroids = nil
 	for range StartingAsteroids {
