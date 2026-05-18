@@ -15,6 +15,13 @@ Go get github.com/BlackDogJet/Go-Asteroids
 
 ```
 
+### Run the Go-Asteroids
+
+```bash
+go run .
+```
+
+
 ## 🤝 Contributing
 
 Install the dependencies for your platform from [raylib GitHub](https://github.com/raysan5/raylib) under build and installation.
