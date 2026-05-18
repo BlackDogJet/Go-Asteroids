@@ -5,9 +5,10 @@ An asteroids clone written in Go using [raylib](https://www.raylib.com/).
 To write an asteroids clone in Go.
 
 ## ⚙️ Installation
-```bash
-Install the required dependencies for your platform at https://github.com/raysan5/raylib under build and installation.
 
+Install the dependencies for your platform from [raylib GitHub](https://github.com/raysan5/raylib) under build and installation.
+
+```bash
 Inside a Go module:
 
 Go get github.com/BlackDogJet/Go-Asteroids
@@ -16,7 +17,7 @@ Go get github.com/BlackDogJet/Go-Asteroids
 
 ## 🤝 Contributing
 
-Go to [raylib GitHub](https://github.com/raysan5/raylib) under build and installation. Install the required dependencies for your platform.
+Install the dependencies for your platform from [raylib GitHub](https://github.com/raysan5/raylib) under build and installation.
 
 ### Clone the repo
 
