@@ -6,7 +6,7 @@ To write an asteroids clone in Go.
 
 ## ⚙️ Installation
 ```bash
-Go to [raylib GitHub](https://github.com/raysan5/raylib) under build and installation. Install the required dependencies for your platform.
+Install the required dependencies for your platform at https://github.com/raysan5/raylib under build and installation.
 
 Inside a Go module:
 
