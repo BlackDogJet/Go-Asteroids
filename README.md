@@ -22,8 +22,18 @@ Go get github.com/BlackDogJet/Go-Asteroids
 ## 🚀 Quick Start
 
 ```bash
+git clone https://github.com/BlackDogJet/Go-Asteroids.git
+cd Go-Asteroids
 go run .
 ```
+## Usage
+
+### Controls
+- `W` / `↑` — move up
+- `A` / `←` — move left
+- `S` / `↓` — move down
+- `D` / `→` — move right
+- `P` — pause menu
 
 ## 🤝 Contributing
 
